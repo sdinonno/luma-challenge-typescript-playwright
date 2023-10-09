@@ -1,0 +1,14 @@
+{
+  "name": "luma-challenge-typescript-playwright",
+  "version": "1.0.0",
+  "description": "This repository contains a automation project using Playwright as framework and Typescript for the https://magento.softwaretestingboard.com website.",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.38.1",
+    "@types/node": "^20.8.3"
+  }
+}
