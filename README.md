@@ -10,6 +10,12 @@ The main goal of this project is gain practice and show my experience using the 
 npx playwright test
 ````
 
+## Report
+To open the HTML report you should execute:
+````shell
+npx playwright show-report
+````
+
 ## Contributing
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Thanks!
 ````text
