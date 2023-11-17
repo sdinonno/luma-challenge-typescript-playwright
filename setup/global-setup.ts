@@ -1,5 +1,5 @@
 import { chromium, FullConfig } from '@playwright/test';
-import LoginPage from '../pages/sign-in-page';
+import SignInPage from '../pages/sign-in-page';
 import pagesUrl from '../utils/pagesUrl';
 
 async function globalSetup(config: FullConfig) {
@@ -8,11 +8,11 @@ async function globalSetup(config: FullConfig) {
   const { baseURL, storageState } = config.projects[0].use;
   const browser = await chromium.launch({ headless: false, timeout: 10000 });
   const page = await browser.newPage();
-  const loginPage = new LoginPage(page);
+  const signInPage = new SignInPage(page);
 
   await page.goto(baseURL+pagesUrl.signIn);
-  await loginPage.doLogin(user, password);
-  await loginPage.checkLoggedIn();
+  await signInPage.doLogin(user, password);
+  await signInPage.checkLoggedIn();
   await page.context().storageState({ path: storageState as string });
   await browser.close();
 }
