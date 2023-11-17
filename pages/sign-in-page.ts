@@ -16,17 +16,17 @@ class SignInPage {
     }
     
     async fillEmail(email: string) {
-        this.email.fill(email);
+        await this.email.fill(email);
     }
 
     async fillPassword(password: string) {
-        this.password.fill(password);
+        await this.password.fill(password);
     }
 
     async doLogin(email: string, password: string){
-        this.fillEmail(email);
-        this.fillPassword(password);
-        this.signInButton.click();
+        await this.fillEmail(email);
+        await this.fillPassword(password);
+        await this.signInButton.click();
     }
 
     async checkLoggedIn() {
