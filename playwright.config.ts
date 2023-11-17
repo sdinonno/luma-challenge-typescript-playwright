@@ -15,6 +15,7 @@ export default defineConfig({
   retries: 0,
   workers: undefined,
   reporter: 'html',
+  //timeout:5000
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     storageState: 'storageState.json',
