@@ -1,4 +1,5 @@
 import { type Locator, type Page, expect } from '@playwright/test';
+import exp from 'constants';
 
 class SignUpPage {
     readonly page: Page;
@@ -16,7 +17,7 @@ class SignUpPage {
         this.email = page.locator("#email_address");
         this.password = page.locator("#password");
         this.confirmPassword = page.locator("#password-confirmation");
-        this.createAccountButton = page.getByTitle("Search");
+        this.createAccountButton = page.getByTitle("Create an Account");
     }
 
     async fillFirstName(firstName: string) {
@@ -40,14 +41,19 @@ class SignUpPage {
     }
 
     async fillAccountForm(firstName: string, lastName: string, email: string, password: string, confirmPassword: string) {
-        this.fillFirstName(firstName);
-        this.fillLastName(lastName);
-        this.fillEmail(email);
-        this.fillPassword(password);
-        this.fillConfirmPassword(confirmPassword);
-        this.createAccountButton.click();
+        await this.fillFirstName(firstName);
+        await this.fillLastName(lastName);
+        await this.fillEmail(email);
+        await this.fillPassword(password);
+        await this.fillConfirmPassword(confirmPassword);
+        await this.createAccountButton.click();
     }
 
+    async checkSucessfullRegistration(){
+        this.page.waitForLoadState('domcontentloaded');
+        await expect.soft(this.page).toHaveURL(/.*account/);
+        await expect.soft(this.page).toHaveTitle("My Account");
+    }
 }
 
 export default SignUpPage;
