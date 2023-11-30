@@ -14,7 +14,7 @@ jobs:
       with:
         node-version: 18
     - name: Update .env file 
-        run: |
+        run:
           echo "USERNAME=${{ secrets.EMAIL }}" >> .env
           echo "PASSWORD=${{ secrets.PASSWORD }}" >> .env
           echo "ENV='production'" >> .env
