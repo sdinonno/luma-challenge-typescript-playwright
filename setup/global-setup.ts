@@ -10,7 +10,9 @@ async function globalSetup(config: FullConfig) {
   const page = await browser.newPage();
   const signInPage = new SignInPage(page);
 
-  await page.goto(baseURL);
+  await page.goto(baseURL+pagesUrl.signIn);
+  await signInPage.doLogin(user, password);
+  await signInPage.checkLoggedIn();
   await page.context().storageState({ path: storageState as string });
   await browser.close();
 }
