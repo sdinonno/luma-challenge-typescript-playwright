@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 import SignInPage from '../pages/sign-in-page';
-import pages from '../utils/pagesUrl';
+import pages from '../utils/pagesAttr';
 
 const userName = process.env.USERNAME!;
 const password = process.env.PASSWORD!;
@@ -10,7 +10,7 @@ test.use({ storageState: { cookies: [], origins: [] } });
 test.describe.configure({ mode: 'serial' });
 
 test.beforeEach(async ({ page }) => {
-    await page.goto(pages.signIn);
+    await page.goto(pages.login.url);
     signInPage = new SignInPage(page);
 });
 

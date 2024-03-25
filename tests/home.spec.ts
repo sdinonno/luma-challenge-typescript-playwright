@@ -1,11 +1,11 @@
 import { test } from '@playwright/test';
 import HomePage from '../pages/home-page';
-import pages from '../utils/pagesUrl';
+import pages from '../utils/pagesAttr';
 
 let homePage: HomePage;
 
 test.beforeEach(async ({ page }) => {
-    await page.goto(pages.home);
+    await page.goto('/');
     homePage = new HomePage(page);
 });
 
@@ -25,8 +25,4 @@ test.describe('Home - Search product', () => {
         await homePage.search("qwe");
         await homePage.checkNoResultMessage();
     })
-})
-
-test.describe('Home - Open pages', () => {
-
 })

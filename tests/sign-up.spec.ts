@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 import SignUpPage from '../pages/sign-up-page';
-import pages from '../utils/pagesUrl';
+import pages from '../utils/pagesAttr';
 import DataGeneratorClass from '../utils/data-generator';
 
 let signUpPage: SignUpPage;
@@ -10,7 +10,7 @@ test.use({ storageState: { cookies: [], origins: [] } });
 test.describe.configure({ mode: 'serial' });
 
 test.beforeEach(async ({ page }) => {
-    await page.goto(pages.signUp);
+    await page.goto(pages.signUp.url);
     signUpPage = new SignUpPage(page);
     dataGenerator = new DataGeneratorClass();
 });
