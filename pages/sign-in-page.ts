@@ -14,8 +14,8 @@ export class SignInPage {
     constructor(page: Page) {
         this.page = page;
         this.email = page.locator("#email");
-        this.password = page.locator("#pass");
-        this.signInButton = page.locator("#send2")
+        this.password = page.getByLabel("Password");
+        this.signInButton = page.getByRole('button', {name: 'Sign In'});
         this.alertMessage = page.locator(".messages > .message-error");
         this.emailErrorMessage = page.locator("#email-error");
     }
@@ -29,6 +29,9 @@ export class SignInPage {
     }
 
     async doLogin(email: string, password: string){
+        if(await this.page.locator("button.fc-cta-consent").isVisible()) {
+            await this.page.locator('button.fc-cta-consent').dispatchEvent('click');
+        }
         await this.fillEmail(email);
         await this.fillPassword(password);
         await this.signInButton.click();

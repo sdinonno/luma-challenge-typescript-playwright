@@ -41,6 +41,9 @@ class SignUpPage {
     }
 
     async fillAccountForm(firstName: string, lastName: string, email: string, password: string, confirmPassword: string) {
+        if(await this.page.locator("button.fc-cta-consent").isVisible()) {
+            await this.page.locator('button.fc-cta-consent').dispatchEvent('click');
+        }
         await this.fillFirstName(firstName);
         await this.fillLastName(lastName);
         await this.fillEmail(email);
