@@ -7,7 +7,6 @@ const password = process.env.PASSWORD!;
 let signInPage: SignInPage;
 
 test.use({ storageState: { cookies: [], origins: [] } });
-test.describe.configure({ mode: 'serial' });
 
 test.beforeEach(async ({ page }) => {
     await page.goto(pages.login.url);

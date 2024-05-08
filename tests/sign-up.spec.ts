@@ -7,7 +7,6 @@ let signUpPage: SignUpPage;
 let dataGenerator: DataGeneratorClass;
 
 test.use({ storageState: { cookies: [], origins: [] } });
-test.describe.configure({ mode: 'serial' });
 
 test.beforeEach(async ({ page }) => {
     await page.goto(pages.signUp.url);
