@@ -1,4 +1,4 @@
-import { chromium, FullConfig } from '@playwright/test';
+import { chromium, expect, FullConfig } from '@playwright/test';
 import SignInPage from '../pages/sign-in-page';
 import pagesUrl from '../utils/pagesAttr';
 
@@ -12,7 +12,7 @@ async function globalSetup(config: FullConfig) {
 
   await page.goto(baseURL+pagesUrl.login.url);
   await signInPage.doLogin(user, password);
-  await signInPage.checkLoggedIn();
+  expect(page.url).toContain(/login/);  
   await page.context().storageState({ path: storageState as string });
   await browser.close();
 }

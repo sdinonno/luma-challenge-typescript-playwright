@@ -45,6 +45,11 @@ export default {
             url: '/sale.html',
             title: 'Sale',
         },
+    },
+    myAccount: {
+        name: "My Account",
+        url: '/customer/account/',
+        title: 'My Account'
     }
 
 }

@@ -1,7 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import baseEnvUrl from './utils/envBaseUrl';
 
-
 require('dotenv').config();
 
 /**

@@ -3,9 +3,7 @@ import pages from '../utils/pagesAttr';
 
 test.describe('Navigation in LUMA website', () => {
 
-    for(const page in pages.navPages) {
-        const pageInfo = pages.navPages[page]
-
+    Object.values(pages.navPages).forEach(pageInfo =>{
         test(`Validate redirection to the section "${pageInfo.name}"`, async ({ page }) => {
             await test.step('I am in the LUMA home page', async () => {
                 page.goto("/");
@@ -21,5 +19,5 @@ test.describe('Navigation in LUMA website', () => {
                 await expect(page).toHaveTitle(pageInfo.title);
             })
         })
-    }
-})
+    });
+});

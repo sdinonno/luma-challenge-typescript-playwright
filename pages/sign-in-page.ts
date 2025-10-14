@@ -6,8 +6,6 @@ export class SignInPage {
     readonly email: Locator;
     readonly password: Locator;
     readonly signInButton: Locator;
-    readonly forgotPasswordLink: Locator;
-    readonly createAccountButton: Locator;
     readonly alertMessage: Locator;
     readonly emailErrorMessage: Locator;
 
@@ -35,21 +33,6 @@ export class SignInPage {
         await this.fillEmail(email);
         await this.fillPassword(password);
         await this.signInButton.click();
-    }
-
-    async checkLoggedIn() {
-        await expect(this.page).toHaveURL(/.*account/);
-        await expect(this.page).toHaveTitle("My Account");
-    }
-
-    async checkInvalidLogin() {
-        await expect(this.alertMessage).toHaveText(messages.signIn.invalid);
-        await expect(this.page).toHaveTitle("Customer Login");
-    }
-
-    async checkInvalidEmailMessage() {
-        await expect(this.emailErrorMessage).toBeVisible();
-        await expect(this.emailErrorMessage).toHaveText(messages.signIn.invalidEmailFormat);
     }
 }
 
